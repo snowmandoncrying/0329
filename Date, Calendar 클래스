@@ -1,4 +1,4 @@
-@@ Date 클래스
+@ Date 클래스
 날짜를 표현하는 클래스. 날짜 정보를 객체 간에 주고 받을 때 주로 사용
 
 package date.example01;
@@ -20,7 +20,57 @@ public class DateExample02 {
 출력
 Fri Mar 29 17:56:29 KST 2024
 2024년 03월 29일 17시 56분 29초
-
-@@ Calendar 클래스
+--------------------------------------------------
+@ Calendar 클래스
 달력을 표현한 추상 클래스
 
+package date.example01;
+import java.util.Calendar;
+public class CalendarExample02 {
+
+	public static void main(String[] args) {
+		
+		Calendar cal = Calendar.getInstance();
+		
+		int year = cal.get(Calendar.YEAR);
+		int month = cal.get(Calendar.MONTH) + 1;
+		int day = cal.get(Calendar.DAY_OF_MONTH);
+		System.out.println(year + "년 " + month + "월 " + day + "일");
+		
+		int week = cal.get(Calendar.DAY_OF_WEEK);
+		String weekStr = ""; // 1이 일요일
+		switch(week) {
+		case 1: weekStr = "일요일"; break;
+		case 2: weekStr = "월요일"; break;
+		case 3: weekStr = "화요일"; break;
+		case 4: weekStr = "수요일"; break;
+		case 5: weekStr = "목요일"; break;
+		case 6: weekStr = "금요일"; break;
+		case 7: weekStr = "토요일"; break;
+		default: weekStr = "잘못된 값"; break;
+		}
+		System.out.println(weekStr);
+		
+		int ampm = cal.get(Calendar.AM_PM);
+		String ampmStr = "";
+			if(ampm == 0) {
+				ampmStr = "오전";		// 0이면 오전, 1이면 오후
+			} else {
+				ampmStr = "오후";
+			}
+			System.out.println(ampmStr);
+			
+			int hour1 = cal.get(Calendar.HOUR);
+			int hour2 = cal.get(Calendar.HOUR_OF_DAY);
+			int minute = cal.get(Calendar.MINUTE);
+			int second = cal.get(Calendar.SECOND);
+			System.out.println(hour1+ "시" + minute + "분" + second+ "초");
+			System.out.println(hour2+ "시" + minute + "분" + second+ "초");
+	}
+}
+출력
+2024년 3월 30일
+토요일
+오전
+11시16분49초
+11시16분49초
